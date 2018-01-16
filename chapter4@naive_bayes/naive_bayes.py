@@ -35,8 +35,7 @@ class NaiveBayes(object):
 		for k in self.condi_prob.keys():
 			for tk in self.condi_prob[k].keys():
 				self.condi_prob[k][tk] = (self.condi_prob[k][tk] + self.smooth) / \
-											(label_counts[k] + self.data_space[tk[0]] * self.smooth)
-		print(self.priori_prob)
+										  (label_counts[k] + self.data_space[tk[0]] * self.smooth)
 
 	def predict(self, X):
 		prob_list = []
