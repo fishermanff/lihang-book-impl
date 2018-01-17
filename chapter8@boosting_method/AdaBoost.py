@@ -29,6 +29,7 @@ class AdaBoost(object):
 			curr_alpha = 0.
 			v_best = v_list[0]
 			y_pred_best = []
+			symbol_best = ''
 			for symbol in self.basic_clf.symbol_set:
 				for v in v_list:
 					self.basic_clf.symbol = symbol
@@ -39,9 +40,10 @@ class AdaBoost(object):
 						curr_alpha = 0.5 * np.log((1 - err) / err)
 						err_min = err
 						v_best = v
+						symbol_best = symbol
 						y_pred_best = y_pred
 			self.alpha.append(curr_alpha)
-			self.func.append(copy.deepcopy(self.basic_clf.setV(v_best)))
+			self.func.append(copy.deepcopy(self.basic_clf.setV(v_best).setSymbol(symbol_best)))
 			print("The training error rate produced by G_%d(x) is %.4f." %(it+1, err_min))
 
 			# update weights
@@ -65,9 +67,12 @@ if __name__ == '__main__':
 							v_list=v_list, 
 							max_num=3)
 	adaboost_clf.train()
-	params = (adaboost_clf.alpha[0], 1, adaboost_clf.alpha[1], 2, adaboost_clf.alpha[2], 3)
 	print("The final boosted classifier is:")
-	print("f(x) = sign[%.4f*G_%d(x)+%.4f*G_%d(x)+%.4f*G_%d(x)]" %params)
+	print("	f(x) = sign[%.4f*G_1(x)+%.4f*G_2(x)+%.4f*G_3(x)]" %tuple(adaboost_clf.alpha))
+	print("where,")
+	print("	G_1(x) = 1 if x %s %.1f else -1" %(adaboost_clf.func[0].symbol, adaboost_clf.func[0].v))
+	print("	G_2(x) = 1 if x %s %.1f else -1" %(adaboost_clf.func[1].symbol, adaboost_clf.func[1].v))
+	print("	G_3(x) = 1 if x %s %.1f else -1" %(adaboost_clf.func[2].symbol, adaboost_clf.func[2].v))
 
 
 
