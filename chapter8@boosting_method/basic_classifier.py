@@ -13,6 +13,10 @@ class BasicClassifier(object):
 		self.v = v
 		return self
 
+	def setSymbol(self, symbol):
+		self.symbol = symbol
+		return self
+
 	def predict(self, X):
 		if self.symbol == '<':
 			return [1 if x < self.v else -1 for x in X]
