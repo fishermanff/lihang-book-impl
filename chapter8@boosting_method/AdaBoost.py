@@ -61,11 +61,7 @@ if __name__ == '__main__':
 	X = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 	y = [1, 1, 1, -1, -1, -1, 1, 1, 1, -1]
 	v_list = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5]
-	adaboost_clf = AdaBoost(data=X, 
-							labels=y, 
-							basic_clf=BasicClassifier(0), 
-							v_list=v_list, 
-							max_num=3)
+	adaboost_clf = AdaBoost(data=X, labels=y, basic_clf=BasicClassifier(0), v_list=v_list, max_num=3)
 	adaboost_clf.train()
 	print("The final boosted classifier is:")
 	print("	f(x) = sign[%.4f*G_1(x)+%.4f*G_2(x)+%.4f*G_3(x)]" %tuple(adaboost_clf.alpha))
