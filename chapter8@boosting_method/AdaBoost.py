@@ -27,11 +27,11 @@ class AdaBoost(object):
 			# solve best basic classifier
 			err_min = 1.
 			curr_alpha = 0.
-			v_best = v_list[0]
+			v_best = self.v_list[0]
 			y_pred_best = []
 			symbol_best = ''
 			for symbol in self.basic_clf.symbol_set:
-				for v in v_list:
+				for v in self.v_list:
 					self.basic_clf.symbol = symbol
 					self.basic_clf.v = v
 					y_pred = self.basic_clf.predict(self.data)
