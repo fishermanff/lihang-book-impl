@@ -1,6 +1,6 @@
 ### AdaBoost算法实现
 * AdaBoost.py
-* basuc_classifier.py  
+* basic_classifier.py  
 
 ***
 
