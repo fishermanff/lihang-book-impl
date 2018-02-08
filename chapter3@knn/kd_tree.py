@@ -78,7 +78,9 @@ if __name__ == '__main__':
 	data_set = np.random.randint(1,51,(3000,5)).tolist()
 	kdTree = KdTree(data_set)
 	kdTree.preOrderTraversal(kdTree.root)
-	nearest_node = kdTree.searchNearest([10,20,30,40,50])
-	print("nearest_node:", nearest_node.val)
+	test_set = np.random.randint(1,51,(10,5)).tolist()
+	for x in test_set:
+		nearest_node = kdTree.searchNearest(x)
+		print("target_node: %s >>> nearest_node: %s" %(x, nearest_node.val))
 
 
