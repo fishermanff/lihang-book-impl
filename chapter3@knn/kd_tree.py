@@ -75,10 +75,10 @@ class KdTree(object):
 if __name__ == '__main__':
 	# data_set = [[2,3],[5,4],[9,6],[4,7],[8,1],[7,2]]
 	np.random.seed(10)
-	data_set = np.random.randint(1,100,(500,2)).tolist()
+	data_set = np.random.randint(1,51,(3000,5)).tolist()
 	kdTree = KdTree(data_set)
 	kdTree.preOrderTraversal(kdTree.root)
-	nearest_node = kdTree.searchNearest([10,10])
+	nearest_node = kdTree.searchNearest([10,20,30,40,50])
 	print("nearest_node:", nearest_node.val)
 
 
