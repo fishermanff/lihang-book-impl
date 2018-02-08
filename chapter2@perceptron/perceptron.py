@@ -12,7 +12,7 @@ class Perceptron(object):
 
 	def train(self, data, labels, max_iter=20, alpha=0.02):
 		m, n = np.shape(data)
-		if (n) != len(self.theta):
+		if n != len(self.theta):
 			raise Exception("Theta dimension is not equal to input data dimension.")
 		it = 0
 		while it < max_iter:
