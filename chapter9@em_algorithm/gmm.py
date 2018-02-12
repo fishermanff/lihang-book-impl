@@ -41,10 +41,6 @@ class GaussianMixtureModel(object):
 		it = 0
 		while it < max_iter:
 			gamma = np.zeros([N,K])
-			# print("iterating", it)
-			# print("curr_alpha", curr_alpha)
-			# print("curr_mu", curr_mu)
-			# print("curr_sigma2", curr_sigma2)
 
 			# E-step:
 			for k in range(K):
